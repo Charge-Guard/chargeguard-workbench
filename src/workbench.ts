@@ -18,16 +18,26 @@ function dataset(): Dataset | null {
   return DATASETS.find((d) => d.id === state.datasetId) ?? DATASETS[0] ?? null;
 }
 
-function readHash(): void {
+/** Reads /app?suite=<id>&run=<n>&mode=<push|pull>. The old #<id>/<n> form is still understood. */
+function readUrl(): void {
+  const q = new URLSearchParams(location.search);
   const m = /^#([a-z]+)(?:\/(\d+))?$/.exec(location.hash);
-  if (!m) return;
-  if (DATASETS.some((d) => d.id === m[1])) state.datasetId = m[1]!;
-  state.runIndex = m[2] !== undefined ? Number(m[2]) : null;
+  const suite = q.get("suite") ?? m?.[1] ?? null;
+  const run = q.get("run") ?? m?.[2] ?? null;
+  if (suite && DATASETS.some((d) => d.id === suite)) state.datasetId = suite;
+  state.runIndex = run !== null && /^\d+$/.test(run) ? Number(run) : null;
+  state.mode = q.get("mode") === "pull" ? "pull" : "push";
 }
 
-function writeHash(): void {
-  const next = state.runIndex === null ? `#${state.datasetId}` : `#${state.datasetId}/${state.runIndex}`;
-  if (state.datasetId !== "loaded" && location.hash !== next) history.replaceState(null, "", next);
+function writeUrl(): void {
+  if (state.datasetId === "loaded") return;
+  const q = new URLSearchParams();
+  if (state.datasetId !== "integration" || state.runIndex !== null) q.set("suite", state.datasetId);
+  if (state.runIndex !== null) q.set("run", String(state.runIndex));
+  else if (state.mode === "pull") q.set("mode", "pull");
+  const qs = q.toString();
+  const next = location.pathname + (qs ? `?${qs}` : "");
+  if (location.pathname + location.search + location.hash !== next) history.replaceState(null, "", next);
 }
 
 async function onFile(file: File): Promise<void> {
@@ -176,15 +186,10 @@ function render(): void {
   );
 
   if (restoreId) document.getElementById(restoreId)?.focus();
-  writeHash();
+  writeUrl();
 }
 
 export function mountWorkbench(): void {
-  readHash();
+  readUrl();
   render();
 }
-window.addEventListener("hashchange", () => {
-  if (!document.getElementById("app")) return;
-  readHash();
-  render();
-});
