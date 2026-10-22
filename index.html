@@ -6,11 +6,14 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'" />
     <meta name="description" content="Recorded ChargeGuard evidence: two worker processes behind one Stellar MPP charge endpoint, with isolated memory stores failing a repeated credential and a shared store passing." />
     <title>ChargeGuard workbench</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23173b3f'/%3E%3Crect x='8' y='7' width='5' height='18' rx='1.5' fill='%23e8f1ee'/%3E%3Crect x='19' y='7' width='5' height='18' rx='1.5' fill='%23e8f1ee'/%3E%3C/svg%3E" />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="canonical" href="https://chargeguard-workbench-anasamasama.vercel.app/" />
+    <meta property="og:title" content="ChargeGuard" />
+    <meta property="og:description" content="Inspect recorded Stellar MPP replay-protection evidence across workers." />
+    <meta property="og:image" content="https://chargeguard-workbench-anasamasama.vercel.app/og-image.svg" />
   </head>
   <body>
-    <a class="skip" href="#runs">Skip to the recorded runs</a>
-    <main id="app"></main>
+    <div id="site"></div>
     <noscript><p>This workbench needs JavaScript to show the recorded reports in your browser.</p></noscript>
     <script type="module" src="/src/main.ts"></script>
   </body>

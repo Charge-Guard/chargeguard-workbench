@@ -490,3 +490,35 @@ h3,
 .summary {
   overflow-wrap: anywhere;
 }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--info); outline-offset: 3px; }
+.site-header, .site-footer { max-width: 1180px; margin: auto; padding: 18px 16px; }
+.site-header { display: flex; align-items: center; gap: 24px; border-bottom: 1px solid var(--line); }
+.brand { font-size: 1.2rem; font-weight: 750; text-decoration: none; }
+.site-header nav, .site-footer nav, .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.site-header nav { margin-left: auto; }
+.site-header [aria-current="page"] { font-weight: 700; }
+.menu-toggle { display: none; }
+.site-footer { border-top: 1px solid var(--line); margin-top: 32px; color: var(--muted); font-size: .9rem; }
+.site-footer nav { margin-top: 10px; }
+.page { max-width: 850px; margin: 22px auto; }
+.page h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.15; margin-bottom: 22px; }
+.page p { max-width: 72ch; margin: 12px 0; }
+.page .block { margin-top: 26px; padding: 20px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+.page .block h2 { margin-top: 0; }
+.page li { margin: 8px 0; }
+.actions { margin: 24px 0; }
+.btn { display: inline-block; padding: 10px 16px; border: 1px solid var(--accent); background: var(--accent); color: var(--bg); border-radius: 6px; text-decoration: none; font: inherit; }
+.btn.secondary { background: var(--panel); color: var(--accent); }
+.btn.small { padding: 4px 10px; font-size: .85rem; }
+.code { padding: 14px; background: var(--neutral-bg); overflow-x: auto; max-width: 100%; }
+.code code { white-space: pre-wrap; overflow-wrap: anywhere; }
+.codebar { display: flex; gap: 12px; align-items: center; }
+.copy-status { color: var(--muted); font-size: .9rem; }
+@media (max-width: 720px) {
+  .site-header { flex-wrap: wrap; gap: 12px; }
+  .menu-toggle { display: block; margin-left: auto; padding: 6px 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 5px; }
+  .site-header nav { display: none; width: 100%; margin: 0; }
+  .site-header nav.open { display: flex; }
+  .page .block { padding: 14px; }
+}

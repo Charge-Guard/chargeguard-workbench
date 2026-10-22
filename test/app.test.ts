@@ -6,7 +6,8 @@ async function boot(hash = ""): Promise<void> {
   history.replaceState(null, "", `/${hash}`);
   const { vi } = await import("vitest");
   vi.resetModules();
-  await import("../src/main.ts");
+  const { mountWorkbench } = await import("../src/workbench.ts");
+  mountWorkbench();
 }
 const click = (sel: string) => (document.querySelector(sel) as HTMLElement).click();
 
