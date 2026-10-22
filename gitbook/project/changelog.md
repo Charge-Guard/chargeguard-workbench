@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0 (22 October 2026)
+- Add landing, docs, about, privacy, terms and not-found routes with shared navigation, mobile menu, metadata and a sitemap. The original tool is at `/app`.
+- Add a scenario gallery linked to actual recorded runs and an explanation of the four delivery levels. No live data requests or scenario execution are added.
+
 ## 0.1.1
 - Runs and suites whose verdicts, expectation matches or totals contradict their checks are now rejected. Re-paired with the published 0.1.1 release of its core (`compat.json` and the vendor stamp record the version and commit). Recorded real-run samples keep the version that recorded them.
 

@@ -13,6 +13,10 @@ A static page that shows **recorded ChargeGuard evidence**: the same Stellar MPP
 
 It runs nothing: no scenario, no server call, no keys. Every state on screen comes from a report that [chargeguard-runner](https://github.com/Charge-Guard/chargeguard-runner) produced from real worker processes (integration evidence against a local stub chain, and testnet-settlement evidence against Stellar testnet). A finite number of runs is evidence, not a proof; nothing here shows linearizability or exactly-once delivery; payment channels are out of scope.
 
+## Site routes (0.2.0)
+
+`/`, `/app`, `/scenarios`, `/levels`, `/docs`, `/about`, `/privacy`, `/terms`. Unknown paths show a not-found page. History API navigation and Vercel rewrites support direct links. The original tool lives at `/app`. The page uses local assets, no analytics, no cookies and no browser storage.
+
 ## Use
 
 ```bash
@@ -33,7 +37,7 @@ Open a run or suite JSON you recorded with `chargeguard run --out` / `suite --ou
 
 ## Verification
 
-`pnpm run typecheck && pnpm test` (33 tests, vitest + jsdom), `pnpm build`. Pairing: runner 0.1.1 (see `compat.json`).
+`pnpm run typecheck && pnpm test` (36 tests, vitest + jsdom), `pnpm build`. Pairing: runner 0.1.1 (see `compat.json`).
 
 ## Limits and status
 
