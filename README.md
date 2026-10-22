@@ -15,7 +15,15 @@ It runs nothing: no scenario, no server call, no keys. Every state on screen com
 
 ## Site routes (0.2.0)
 
-`/`, `/app`, `/scenarios`, `/levels`, `/docs`, `/about`, `/privacy`, `/terms`. Unknown paths show a not-found page. History API navigation and Vercel rewrites support direct links. The original tool lives at `/app`. The page uses local assets, no analytics, no cookies and no browser storage.
+| Route | Content |
+|---|---|
+| `/` | Landing page: problem, how it works, a recorded example read from the bundled suite, Built on Stellar, install snippet, limits |
+| `/app` | The viewer. Deep links: `/app?suite=integration\|testnet&run=<n>&mode=pull`. The old `#testnet/3` form still works and is rewritten |
+| `/scenarios` | Every scenario in the bundled suites, the stores it ran against and each recorded verdict, linked into `/app` |
+| `/levels` | The four levels, with a worked example quoted from a recorded run (closes #4) |
+| `/docs`, `/about`, `/privacy`, `/terms` | Getting started, project, privacy policy, terms of use |
+
+Unknown paths show a not-found page. Routing uses the History API with a Vercel rewrite. The site makes no request to any other origin (`connect-src 'self'`), sets no cookies and uses no browser storage.
 
 ## Use
 
@@ -37,7 +45,7 @@ Open a run or suite JSON you recorded with `chargeguard run --out` / `suite --ou
 
 ## Verification
 
-`pnpm run typecheck && pnpm test` (36 tests, vitest + jsdom), `pnpm build`. Pairing: runner 0.1.1 (see `compat.json`).
+`pnpm run typecheck && pnpm test` (52 tests, vitest + jsdom), `pnpm build`. Pairing: runner 0.1.1 (see `compat.json`).
 
 ## Limits and status
 
